@@ -62,11 +62,9 @@ void CArreraServeur::onMessageReceived(const QString &message){
     emit messageReceived(message);
 
     // Préparer et envoyer une réponse JSON comme avant :
-    QJsonObject response;
-    response["message"] = "WebSocket response: Message Received";
-    QString jsonResponse = QJsonDocument(response).toJson(QJsonDocument::Compact);
-
-    client->sendTextMessage(jsonResponse);
+    if (message != "Message Received"){
+        client->sendTextMessage("Message Received");
+    }
 }
 
 void CArreraServeur::onClientDeconected(){
