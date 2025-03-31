@@ -17,7 +17,7 @@ CXX           = g++
 DEFINES       = -DQT_QML_DEBUG -DQT_WEBSOCKETS_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -Wextra -D_REENTRANT $(DEFINES)
 CXXFLAGS      = -pipe -g -std=gnu++1z -Wall -Wextra -D_REENTRANT $(DEFINES)
-INCPATH       = -I../../../Serveur-C -I. -I/usr/include/qt6 -I/usr/include/qt6/QtWebSockets -I/usr/include/qt6/QtNetwork -I/usr/include/qt6/QtCore -I. -I/usr/lib64/qt6/mkspecs/linux-g++
+INCPATH       = -I../../../Serveur-C- -I. -I/usr/include/qt6 -I/usr/include/qt6/QtWebSockets -I/usr/include/qt6/QtNetwork -I/usr/include/qt6/QtCore -I. -I/usr/lib64/qt6/mkspecs/linux-g++
 QMAKE         = /usr/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -37,7 +37,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = Serveur-C1.0.0
-DISTDIR = /home/baptistep/Documents/Arrera-Comunication/Serveur-C/build/Desktop-Debug/.tmp/Serveur-C1.0.0
+DISTDIR = /home/baptistep/Documents/CArreraComunication/Serveur-C-/build/Desktop-Debug/.tmp/Serveur-C1.0.0
 LINK          = g++
 LFLAGS        = 
 LIBS          = $(SUBLIBS) /usr/lib64/libQt6WebSockets.so /usr/lib64/libQt6Network.so /usr/lib64/libQt6Core.so -lpthread   
@@ -340,7 +340,7 @@ compiler_moc_header_clean:
 moc_carreraserveur.cpp: ../../carreraserveur.h \
 		moc_predefs.h \
 		/usr/lib64/qt6/libexec/moc
-	/usr/lib64/qt6/libexec/moc $(DEFINES) --include /home/baptistep/Documents/Arrera-Comunication/Serveur-C/build/Desktop-Debug/moc_predefs.h -I/usr/lib64/qt6/mkspecs/linux-g++ -I/home/baptistep/Documents/Arrera-Comunication/Serveur-C -I/usr/include/qt6 -I/usr/include/qt6/QtWebSockets -I/usr/include/qt6/QtNetwork -I/usr/include/qt6/QtCore -I. -I/usr/include/c++/14 -I/usr/include/c++/14/x86_64-redhat-linux -I/usr/include/c++/14/backward -I/usr/lib/gcc/x86_64-redhat-linux/14/include -I/usr/local/include -I/usr/include ../../carreraserveur.h -o moc_carreraserveur.cpp
+	/usr/lib64/qt6/libexec/moc $(DEFINES) --include /home/baptistep/Documents/CArreraComunication/Serveur-C-/build/Desktop-Debug/moc_predefs.h -I/usr/lib64/qt6/mkspecs/linux-g++ -I/home/baptistep/Documents/CArreraComunication/Serveur-C- -I/usr/include/qt6 -I/usr/include/qt6/QtWebSockets -I/usr/include/qt6/QtNetwork -I/usr/include/qt6/QtCore -I. -I/usr/include/c++/14 -I/usr/include/c++/14/x86_64-redhat-linux -I/usr/include/c++/14/backward -I/usr/lib/gcc/x86_64-redhat-linux/14/include -I/usr/local/include -I/usr/include ../../carreraserveur.h -o moc_carreraserveur.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
