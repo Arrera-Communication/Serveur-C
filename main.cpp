@@ -12,9 +12,16 @@ int main(int argc, char *argv[])
 
     server.startServeur(12345);
 
-    QObject::connect(&server, &CArreraServeur::messageReceived, [](const QString &message){
+    cout.flush();
+
+    bool connect = QObject::connect(&server, &CArreraServeur::messageReceived, [](const QString &message){
         cout << "Message :" << message.toStdString();
+        cout.flush();
     });
+
+    if (!connect){
+        cout << "erreur" << endl;
+    }
 
 
 

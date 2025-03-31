@@ -13,6 +13,7 @@ class CArreraServeur : public QObject
 private:
     QWebSocketServer *serverWebSocket;
     QList <QWebSocket*> webSocketClients;
+    volatile bool signalEmitted = false;
 public:
     explicit CArreraServeur(QObject *parent = nullptr);
     ~CArreraServeur();

@@ -57,7 +57,8 @@ void CArreraServeur::onMessageReceived(const QString &message){
     QWebSocket *client = qobject_cast<QWebSocket *>(sender());
     if (!client) return;
 
-    // Émettre un signal lorsqu'un message est reçu :
+    signalEmitted = true;
+    // Émettre un signal lorsqu'un message est reçu
     emit messageReceived(message);
 
     // Préparer et envoyer une réponse JSON comme avant :
