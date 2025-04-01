@@ -20,6 +20,7 @@ public:
     ~CArreraServeur();
     bool startServeur(quint16 port);
     bool stopServeur();
+    bool sendMessage(const QString nameClient,const QString &message);
 private slots:
     void onNewConnectionOfClient();
     void onMessageReceived(const QString &message);

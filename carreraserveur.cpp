@@ -7,7 +7,9 @@ CArreraServeur::CArreraServeur(QObject *parent)
     : QObject{parent}
 {}
 
-CArreraServeur::~CArreraServeur(){}
+CArreraServeur::~CArreraServeur(){
+    stopServeur();
+}
 
 bool CArreraServeur::startServeur(quint16 port)
 {
@@ -43,6 +45,22 @@ bool CArreraServeur::stopServeur() {
     else {
         return false;
     }
+}
+
+bool CArreraServeur::sendMessage(const QString nameClient,const QString &message)
+{
+    if (webSocketClients.values().contains(nameClient)){
+
+        QWebSocket* sockets = webSocketClients.key(nameClient);
+        sockets->sendTextMessage(message);
+        return true;
+    }
+    else{
+        return false;
+    }
+
+    socketClient.sendTextMessage(message);
+    return true;
 }
 
 void CArreraServeur::onNewConnectionOfClient(){
