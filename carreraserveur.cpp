@@ -30,6 +30,7 @@ bool CArreraServeur::stopServeur() {
 
         // Fermeture de toutes les connexions client
         for (QWebSocket *client : webSocketClients.keys()) {
+            client->sendTextMessage("Serveur down");
             client->close();
             client->deleteLater();
         }
