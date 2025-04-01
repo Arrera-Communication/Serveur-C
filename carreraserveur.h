@@ -6,13 +6,14 @@
 #include <QWebSocket>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QHash>
 
 class CArreraServeur : public QObject
 {
     Q_OBJECT
 private:
     QWebSocketServer *serverWebSocket;
-    QList <QWebSocket*> webSocketClients;
+    QHash <QWebSocket*, QString> webSocketClients;
     volatile bool signalEmitted = false;
 public:
     explicit CArreraServeur(QObject *parent = nullptr);
@@ -24,7 +25,7 @@ private slots:
     void onMessageReceived(const QString &message);
     void onClientDeconected();
 signals:
-    void messageReceived(const QString &message);
+    void messageReceived(const QString &nameSoft,const QString &message);
 };
 
 #endif // CARRERASERVEUR_H

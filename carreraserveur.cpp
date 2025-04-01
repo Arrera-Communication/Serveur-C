@@ -24,23 +24,22 @@ bool CArreraServeur::startServeur(quint16 port)
     }
 }
 
-bool CArreraServeur::stopServeur(){
-    if (serverWebSocket && serverWebSocket->isListening())
-    {
+bool CArreraServeur::stopServeur() {
+    if (serverWebSocket && serverWebSocket->isListening()) {
         serverWebSocket->close(); // Fermeture du serveur
 
-        // Fermeture de tout les connection au client
-        for (QWebSocket *client : webSocketClients) {
+        // Fermeture de toutes les connexions client
+        for (QWebSocket *client : webSocketClients.keys()) {
             client->close();
             client->deleteLater();
         }
 
-        // Clear de la list
+        // Clear de la map
         webSocketClients.clear();
 
         return true;
     }
-    else{
+    else {
         return false;
     }
 }
@@ -50,18 +49,29 @@ void CArreraServeur::onNewConnectionOfClient(){
     connect(client,&QWebSocket::textFrameReceived, this,&CArreraServeur::onMessageReceived);
     connect(client,&QWebSocket::disconnected, this,&CArreraServeur::onClientDeconected);
 
-    webSocketClients.append(client);
+    webSocketClients[client] = QString();
 }
 
 void CArreraServeur::onMessageReceived(const QString &message){
     QWebSocket *client = qobject_cast<QWebSocket *>(sender());
-    if (!client) return;
 
-    signalEmitted = true;
-    // Émettre un signal lorsqu'un message est reçu
-    emit messageReceived(message);
+    if (message.contains("namesoft")){
+        QString mutableMessage = message;
+        mutableMessage.remove("namesoft").remove(" ");
+        mutableMessage = mutableMessage.simplified().toLower();
 
-    // Préparer et envoyer une réponse JSON comme avant :
+        webSocketClients[client] = mutableMessage;
+
+    }else{
+
+        if (!client) return;
+
+        signalEmitted = true;
+        // Émettre un signal lorsqu'un message est reçu
+        emit messageReceived(webSocketClients[client],message+"\n");
+
+    }
+
     if (message != "Message Received"){
         client->sendTextMessage("Message Received");
     }
@@ -71,7 +81,7 @@ void CArreraServeur::onClientDeconected(){
     QWebSocket *client = qobject_cast<QWebSocket *>(sender());
     if (client)
     {
-        webSocketClients.removeAll(client);
+        webSocketClients.remove(client);
         client->deleteLater();
     }
 }

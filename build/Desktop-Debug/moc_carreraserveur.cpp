@@ -40,6 +40,7 @@ static constexpr auto qt_meta_stringdata_ZN14CArreraServeurE = QtMocHelpers::str
     "CArreraServeur",
     "messageReceived",
     "",
+    "nameSoft",
     "message",
     "onNewConnectionOfClient",
     "onMessageReceived",
@@ -63,19 +64,19 @@ Q_CONSTINIT static const uint qt_meta_data_ZN14CArreraServeurE[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,   38,    2, 0x06,    1 /* Public */,
+       1,    2,   38,    2, 0x06,    1 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       4,    0,   41,    2, 0x08,    3 /* Private */,
-       5,    1,   42,    2, 0x08,    4 /* Private */,
-       6,    0,   45,    2, 0x08,    6 /* Private */,
+       5,    0,   43,    2, 0x08,    4 /* Private */,
+       6,    1,   44,    2, 0x08,    5 /* Private */,
+       7,    0,   47,    2, 0x08,    7 /* Private */,
 
  // signals: parameters
-    QMetaType::Void, QMetaType::QString,    3,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString,    3,    4,
 
  // slots: parameters
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,    3,
+    QMetaType::Void, QMetaType::QString,    4,
     QMetaType::Void,
 
        0        // eod
@@ -93,6 +94,7 @@ Q_CONSTINIT const QMetaObject CArreraServeur::staticMetaObject = { {
         // method 'messageReceived'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         // method 'onNewConnectionOfClient'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'onMessageReceived'
@@ -109,7 +111,7 @@ void CArreraServeur::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
     auto *_t = static_cast<CArreraServeur *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->messageReceived((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 0: _t->messageReceived((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
         case 1: _t->onNewConnectionOfClient(); break;
         case 2: _t->onMessageReceived((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         case 3: _t->onClientDeconected(); break;
@@ -119,7 +121,7 @@ void CArreraServeur::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
     if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _q_method_type = void (CArreraServeur::*)(const QString & );
+            using _q_method_type = void (CArreraServeur::*)(const QString & , const QString & );
             if (_q_method_type _q_method = &CArreraServeur::messageReceived; *reinterpret_cast<_q_method_type *>(_a[1]) == _q_method) {
                 *result = 0;
                 return;
@@ -160,9 +162,9 @@ int CArreraServeur::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void CArreraServeur::messageReceived(const QString & _t1)
+void CArreraServeur::messageReceived(const QString & _t1, const QString & _t2)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 QT_WARNING_POP

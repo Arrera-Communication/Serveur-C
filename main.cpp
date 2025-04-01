@@ -14,8 +14,8 @@ int main(int argc, char *argv[])
 
     cout.flush();
 
-    bool connect = QObject::connect(&server, &CArreraServeur::messageReceived, [](const QString &message){
-        cout << "Message :" << message.toStdString();
+    bool connect = QObject::connect(&server, &CArreraServeur::messageReceived, [](const QString nameSoft,const QString &message){
+        cout << nameSoft.toStdString() << " send " << message.toStdString();
         cout.flush();
     });
 
