@@ -58,8 +58,6 @@ bool CArreraServeur::sendMessage(const QString nameClient,const QString &message
     else{
         return false;
     }
-
-    socketClient.sendTextMessage(message);
     return true;
 }
 

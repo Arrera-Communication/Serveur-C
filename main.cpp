@@ -14,14 +14,19 @@ int main(int argc, char *argv[])
 
     cout.flush();
 
-    bool connect = QObject::connect(&server, &CArreraServeur::messageReceived, [](const QString nameSoft,const QString &message){
+    bool connect = QObject::connect(&server, &CArreraServeur::messageReceived, [&server](const QString nameSoft, const QString &message) {
         cout << nameSoft.toStdString() << " send " << message.toStdString();
         cout.flush();
+        if (!server.sendMessage("socket-client", "Je suis ton maitre")) {
+            cout << "Erreur" << endl;
+        }
     });
+
 
     if (!connect){
         cout << "erreur" << endl;
     }
+
 
 
 
